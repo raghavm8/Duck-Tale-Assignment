@@ -1,0 +1,29 @@
+Pre requisites:
+postgre, .net6
+
+
+Update connectionString according to local server
+Queries to create table
+
+CREATE TABLE public.employees
+(
+    "EmpId" integer NOT NULL DEFAULT nextval('"employees_EmpId_seq"'::regclass),
+    "EmpName" text COLLATE pg_catalog."default" NOT NULL,
+    "ManagerId" integer NOT NULL,
+    "EmpSalary" integer NOT NULL,
+    CONSTRAINT "PK_employees" PRIMARY KEY ("EmpId")
+)
+
+INSERT INTO public.employees(
+	"EmpId", "EmpName", "ManagerId", "EmpSalary")
+  VALUES (1, 'A', 0, 10000)
+  VALUES (4,'D',1,3500)
+  VALUES (5,'E',3,2500)
+  VALUES (6,'F',1,1500)
+  VALUES (2,'B',1,4000)
+  VALUES (3,'C',2,3000);	
+
+
+Run commands in package manager console:
+Add-Migration InitalDatabase
+Update-Database							
